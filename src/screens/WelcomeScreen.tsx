@@ -23,6 +23,7 @@ export default function WelcomeScreen() {
   return (
     <View className="flex-1 justify-center items-center space-y-10 bg-amber-500">
       <StatusBar style="light" />
+      
       {/* Logo Image with ring outlines */}
       <Animated.View className="bg-white/20 rounded-full" style={{padding: ringPadding1}}>
         <Animated.View className="bg-white/20 rounded-full" style={{padding: ringPadding2}}>
@@ -31,6 +32,7 @@ export default function WelcomeScreen() {
           />
         </Animated.View>
       </Animated.View>
+
       {/* Title and slogan */}
       <View className='flex items-center space-y-2'>
           <Text className='flex font-bold text-white tracking-widest' style={{fontSize: hp(7)}}>

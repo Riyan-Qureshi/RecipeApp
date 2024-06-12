@@ -1,14 +1,15 @@
 import { StatusBar } from 'expo-status-bar'
 import { View, ScrollView, Image, Text, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BellIcon, MagnifyingGlassCircleIcon, UserCircleIcon } from "react-native-heroicons/outline";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
-import Categories from '../components/Categories';
-
+import Categories from '../components/Categories'
+import useGetCategories from '../hooks/useGetCategories';
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState('Main')
-  // console.log(activeCategory)
+  const {categories} = useGetCategories()
+
   return (
     <View className="flex-1 bg-white">
       <StatusBar style="dark" />
@@ -45,7 +46,7 @@ export default function HomeScreen() {
 
         {/* Categories section */}
         <View className='mx-4'>
-          <Categories activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+          <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
         </View>
         
       </ScrollView>
