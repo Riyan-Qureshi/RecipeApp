@@ -3,6 +3,7 @@ import { View, ScrollView, Image, Text, TextInput } from 'react-native'
 import React from 'react'
 import { BellIcon, MagnifyingGlassCircleIcon, UserCircleIcon } from "react-native-heroicons/outline";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
+import Categories from '../components/Categories';
 
 
 export default function HomeScreen() {
@@ -39,6 +40,12 @@ export default function HomeScreen() {
           />
           <MagnifyingGlassCircleIcon color={'gray'} size={hp(4)}/>
         </View>
+
+        {/* Categories section */}
+        <View className='mx-4'>
+          <Categories/>
+        </View>
+        
       </ScrollView>
     </View>
   )
