@@ -7,6 +7,7 @@ import { HeartIcon } from 'react-native-heroicons/solid'
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
 import RecipeKeyDetail from '../utilities/RecipeKeyDetail'
+import YoutubeIframe from 'react-native-youtube-iframe'
 
 export default function RecipeCardScreen(mealData: any) {
   const item = mealData.route.params.item
@@ -38,6 +39,15 @@ export default function RecipeCardScreen(mealData: any) {
       }
     }
     return (indexes) 
+  }
+
+  const getYoutubeVideoID = (url: string) => {
+    const regex: RegExp = /[?&]v=([^&]+)/;
+    const match: RegExpMatchArray | null = url.match(regex)
+    if (match && match[1]) {
+      return match[1]
+    }
+    return undefined
   }
 
   return (
@@ -113,6 +123,19 @@ export default function RecipeCardScreen(mealData: any) {
           <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
         }
       </View>
+
+      {/* Recipe instruction video */}
+      { recipe.strYoutube &&
+        <View className='mx-4 space-y-1 pt-3'>
+          <Text style={{fontSize: hp(2.5)}} className='font-bold flex-1 text-neutral-800'>Recipe Video Instructions</Text>
+          <View>
+            <YoutubeIframe 
+              videoId={getYoutubeVideoID(recipe.strYoutube)}
+              height={hp(30)}
+            />
+          </View>
+        </View>
+      }
     </ScrollView>
   )
 }
