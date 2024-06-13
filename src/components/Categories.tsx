@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { mockData } from '../constants/MockFoodData'
+// import { mockData } from '../constants/MockFoodData'
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
 import Animated, { FadeInRight, FadeOut } from 'react-native-reanimated';

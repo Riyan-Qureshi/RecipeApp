@@ -11,12 +11,15 @@ export default function useGetCategories() {
 
     const fetchCategories = async () => {
         try{
-        const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php')
-        if (response && response.data) {
-            setCategories(response.data.categories)
-        }
+            const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php')
+            if (response && response.data) {
+                setCategories(response.data.categories)
+            }
+            // console.log(categories)
         } catch(err) {
-        console.log('Could not fetch categories data')
+            console.log('Could not fetch categories data')
+        } finally {
+            
         }
     }
     return {categories}

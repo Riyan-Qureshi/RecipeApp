@@ -1,14 +1,33 @@
 import { StatusBar } from 'expo-status-bar'
-import { View, ScrollView, Image, Text, TextInput } from 'react-native'
+import { View, ScrollView, Image, Text, TextInput, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { BellIcon, MagnifyingGlassCircleIcon, UserCircleIcon } from "react-native-heroicons/outline";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
 import Categories from '../components/Categories'
-import useGetCategories from '../hooks/useGetCategories';
+import useGetCategories from '../hooks/useGetCategories'
+import Recipes from '../components/Recipes'
+import axios from 'axios';
 
 export default function HomeScreen() {
-  const [activeCategory, setActiveCategory] = useState('Main')
+  const [activeCategory, setActiveCategory] = useState('Beef')
   const {categories} = useGetCategories()
+  // const {meals} = useGetRecipes('Beef')
+  const [meals, setMeals] = useState([])
+
+  const fetchRecipes = async () => {
+      try{
+          const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${activeCategory}`)
+          if (res && res.data) {
+            setMeals(res.data.meals)
+          }
+      } catch(err) {
+          console.log('Could not fetch recipe data')
+      }
+  }
+  
+  useEffect(() => {
+    fetchRecipes()
+  }, [activeCategory])
 
   return (
     <View className="flex-1 bg-white">
@@ -46,9 +65,15 @@ export default function HomeScreen() {
 
         {/* Categories section */}
         <View className='mx-4'>
-          <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+          {categories.length>0 && <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>}
         </View>
         
+        {/* Recipe section */}
+        <View className='mx-4'>
+          {
+            meals.length>0 && categories.length>0? <Recipes meals={meals}/> : <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
+          }
+        </View>
       </ScrollView>
     </View>
   )

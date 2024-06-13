@@ -1,15 +1,38 @@
-interface FoodData {
-    name: string
-    image: string
+export interface RecipeData {
+    strMeal: string
+    strMealThumb: string
+    idMeal: number
 }
 
-export const mockData: Array<FoodData> = [
+export const mockData: Array<RecipeData> = [
     {
-        name: 'Main',
-        image: 'https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg'
+        strMeal: 'Main',
+        strMealThumb: 'https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg',
+        idMeal: 1
     },
     {
-        name: 'Snack',
-        image: 'https://www.themealdb.com/images/ingredients/Apple.png'
+        strMeal: 'Snack',
+        strMealThumb: 'https://www.themealdb.com/images/ingredients/Apple.png',
+        idMeal: 2
+    },
+    {
+        strMeal: 'Main',
+        strMealThumb: 'https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg',
+        idMeal: 1
+    },
+    {
+        strMeal: 'Snack',
+        strMealThumb: 'https://www.themealdb.com/images/ingredients/Apple.png',
+        idMeal: 2
+    },
+     {
+        strMeal: 'Main',
+        strMealThumb: 'https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg',
+        idMeal: 1
+    },
+    {
+        strMeal: 'Snack',
+        strMealThumb: 'https://www.themealdb.com/images/ingredients/Apple.png',
+        idMeal: 2
     },
 ]
