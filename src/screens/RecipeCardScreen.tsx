@@ -29,6 +29,17 @@ export default function RecipeCardScreen(mealData: any) {
     fetchRecipes(item.idMeal)
   }, [])
 
+  const ingredientIndices = (mealData: any) => {
+    if(!mealData) return []
+    let indexes: number[] = []
+    for(let i: number = 1; i<20; i++) {
+      if(recipe['strIngredient'+i]) {
+        indexes.push(i)
+      }
+    }
+    return (indexes) 
+  }
+
   return (
     <ScrollView 
       className='flex-1 bg-white mx-1 my-1'
@@ -68,6 +79,28 @@ export default function RecipeCardScreen(mealData: any) {
         <RecipeKeyDetail value={3} unit={'People'} iconType='servings'/>
         <RecipeKeyDetail value={100} unit={'kCal'} iconType='calories'/>
         <RecipeKeyDetail value={1} unit={'Easy'} iconType='difficulty'/>
+      </View>
+      
+      {/* Ingredients list section */}
+      <View className='mx-4 space-y-1 pt-3'>
+        <Text style={{fontSize: hp(2.5)}} className='font-bold flex-1 text-neutral-800'>Ingredients</Text>
+        {
+          recipe?
+          ingredientIndices(recipe).map((i) => {
+            return(
+              <View key={i} className='flex-row space-x-4 items-center mx-2'>
+                <View style={{width: hp(1.5), height: hp(1.5)}} className='flex rounded-full bg-amber-400 p-1'> 
+                  <View style={{width: hp(1.5), height: hp(1.5)}} className='flex rounded-full bg-amber-200'/>
+                </View>
+                <View className='flex-row space-x-2'>
+                  <Text style={{fontSize: hp(1.8)}} className='font-bold flex text-neutral-700'>{recipe['strMeasure'+i]}</Text>
+                  <Text style={{fontSize: hp(1.8)}} className='font-semibold flex text-neutral-600'>{recipe['strIngredient'+i]}</Text>
+                </View>
+              </View>
+            )
+          }):
+          <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
+        }
       </View>
       
 
