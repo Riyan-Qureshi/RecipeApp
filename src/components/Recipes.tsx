@@ -29,7 +29,6 @@ const RecipeCard = ({item, index, navigation}:{item: any, index: number, navigat
     const isEven: boolean = index%2==0
     const cardMargin: string = isEven? 'pr-2':'pl-2'
     const {strMealThumb, strMeal, idMeal} = item
-    // const recipe: RecipeData = item
     return(
         <Animated.View entering={FadeInRight.duration(500).delay(100*index).springify()}>
             <Pressable

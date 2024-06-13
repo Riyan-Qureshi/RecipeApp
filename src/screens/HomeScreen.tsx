@@ -11,7 +11,6 @@ import axios from 'axios';
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState('Beef')
   const {categories} = useGetCategories()
-  // const {meals} = useGetRecipes('Beef')
   const [meals, setMeals] = useState([])
 
   const fetchRecipes = async () => {

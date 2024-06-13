@@ -14,7 +14,6 @@ export default function useGetRecipes(category: string) {
             console.log(response.data)
             if (response && response.data) {
                 setMeals(response.data.meals)
-                // console.log(meals)
             }
         } catch(err) {
             console.log('Could not fetch recipe data')
