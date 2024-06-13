@@ -13,19 +13,19 @@ export default function HomeScreen() {
   const {categories} = useGetCategories()
   const [meals, setMeals] = useState([])
 
-  const fetchRecipes = async () => {
+  const fetchMeals = async () => {
       try{
           const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${activeCategory}`)
           if (res && res.data) {
             setMeals(res.data.meals)
           }
       } catch(err) {
-          console.log('Could not fetch recipe data')
+          console.log('Could not fetch meal data')
       }
   }
   
   useEffect(() => {
-    fetchRecipes()
+    fetchMeals()
   }, [activeCategory])
 
   return (

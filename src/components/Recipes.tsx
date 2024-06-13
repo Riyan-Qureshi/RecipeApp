@@ -1,7 +1,6 @@
 import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 import MasonryList from '@react-native-seoul/masonry-list';
-import { RecipeData, mockData } from '../constants/MockFoodData';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Animated, { FadeInRight } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';

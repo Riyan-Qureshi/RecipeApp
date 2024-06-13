@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -15,7 +14,6 @@ export default function useGetCategories() {
             if (response && response.data) {
                 setCategories(response.data.categories)
             }
-            // console.log(categories)
         } catch(err) {
             console.log('Could not fetch categories data')
         } finally {
