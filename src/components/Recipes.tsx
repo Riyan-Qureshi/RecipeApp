@@ -4,6 +4,7 @@ import MasonryList from '@react-native-seoul/masonry-list';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Animated, { FadeInRight } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
+import { CachedImage } from '../helpers/Image';
 
 export default function Recipes(meals: any) {
     const navigation = useNavigation()
@@ -35,11 +36,19 @@ const RecipeCard = ({item, index, navigation}:{item: any, index: number, navigat
                 className={'flex justify-center mb-4 space-y-1 items-center '+cardMargin}
                 onPress={() => navigation.navigate('Recipe', {item})}
             >
-                <Image 
+                {/* <Image 
                 source={{uri: strMealThumb}} 
                 className={'rounded-3xl bg-black/10'} 
                 style={{width: '100%', height: index%3==0? hp(25):hp(35)}}
+                /> */}
+
+                <CachedImage
+                    uri={strMealThumb} 
+                    className={'rounded-3xl bg-black/10'} 
+                    style={{width: '100%', height: index%3==0? hp(25):hp(35)}}
+                    // sharedTransitionTag={strMeal}
                 />
+
                 <Text style={{fontSize: hp(1.8)}} className='text-neutral-600'>
                     {strMeal.length>19? strMeal.slice(0,19)+'...':strMeal}
                 </Text>

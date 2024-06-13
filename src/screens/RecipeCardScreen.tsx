@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
 import RecipeKeyDetail from '../utilities/RecipeKeyDetail'
 import YoutubeIframe from 'react-native-youtube-iframe'
+import { CachedImage } from '../helpers/Image'
 
 export default function RecipeCardScreen(mealData: any) {
   const item = mealData.route.params.item
@@ -56,13 +57,21 @@ export default function RecipeCardScreen(mealData: any) {
       showsVerticalScrollIndicator={false}
     >
       <StatusBar style="light" />
+
+      {/* Recipe image */}
       <View className='justify-center mb-4'>
-        <Image 
+        {/* <Image 
           source={{uri: item.strMealThumb}}
           style={{width: wp(98), height: hp(50), borderRadius: 55}}
+        /> */}
+        <CachedImage
+          uri={item.strMealThumb} 
+          style={{width: wp(98), height: hp(50), borderRadius: 55}}
+          // sharedTransitionTag={item.strMeal}
         />
       </View>
 
+      {/* Recipe title and origin */}
       <View className='mx-4 mb-1 space-y-2'>
         <Text style={{fontSize: hp(3)}} className='font-bold flex-1 text-neutral-950'>{recipe.strMeal}</Text>
         <Text style={{fontSize: hp(2)}} className='font-semibold flex-1 text-neutral-800'>{recipe.strArea}</Text>
