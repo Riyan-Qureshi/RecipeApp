@@ -7,11 +7,14 @@ import Categories from '../components/Categories'
 import useGetCategories from '../hooks/useGetCategories'
 import Recipes from '../components/Recipes'
 import axios from 'axios';
+import { UNSTABLE_usePreventRemove } from '@react-navigation/native';
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState('Beef')
   const {categories} = useGetCategories()
   const [meals, setMeals] = useState([])
+
+  UNSTABLE_usePreventRemove(true, () => {})
 
   const fetchMeals = async () => {
       try{
