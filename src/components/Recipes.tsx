@@ -4,7 +4,7 @@ import MasonryList from '@react-native-seoul/masonry-list';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Animated, { FadeInRight } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
-import { CachedImage } from '../helpers/Image';
+import { CachedImage } from '../helpers/CachedImage';
 
 export default function Recipes(meals: any) {
     const navigation = useNavigation()

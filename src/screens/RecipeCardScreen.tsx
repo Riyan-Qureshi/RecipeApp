@@ -8,7 +8,8 @@ import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
 import RecipeKeyDetail from '../utilities/RecipeKeyDetail'
 import YoutubeIframe from 'react-native-youtube-iframe'
-import { CachedImage } from '../helpers/Image'
+import { CachedImage } from '../helpers/CachedImage'
+import Animated, { FadeIn, FadeInDown, FadeInLeft, FadeInRight, FadeInUp } from 'react-native-reanimated'
 
 export default function RecipeCardScreen(mealData: any) {
   const item = mealData.route.params.item
@@ -59,7 +60,7 @@ export default function RecipeCardScreen(mealData: any) {
       <StatusBar style="light" />
 
       {/* Recipe image */}
-      <View className='justify-center mb-4'>
+      <Animated.View entering={FadeIn.duration(700)} className='justify-center mb-4'>
         {/* <Image 
           source={{uri: item.strMealThumb}}
           style={{width: wp(98), height: hp(50), borderRadius: 55}}
@@ -69,16 +70,20 @@ export default function RecipeCardScreen(mealData: any) {
           style={{width: wp(98), height: hp(50), borderRadius: 55}}
           // sharedTransitionTag={item.strMeal}
         />
-      </View>
+      </Animated.View>
 
       {/* Recipe title and origin */}
-      <View className='mx-4 mb-1 space-y-2'>
-        <Text style={{fontSize: hp(3)}} className='font-bold flex-1 text-neutral-950'>{recipe.strMeal}</Text>
-        <Text style={{fontSize: hp(2)}} className='font-semibold flex-1 text-neutral-800'>{recipe.strArea}</Text>
-      </View>
+      {
+          recipe?
+          <Animated.View entering={FadeIn.delay(100).duration(1000)} className='mx-4 mb-1 space-y-2 pb-2'>
+            <Text style={{fontSize: hp(3)}} className='font-bold flex-1 text-neutral-950'>{recipe.strMeal}</Text>
+            <Text style={{fontSize: hp(2)}} className='font-semibold flex-1 text-neutral-800'>{recipe.strArea}</Text>
+          </Animated.View>:
+          <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
+      }
 
       {/* Return to HomeScreen / back button */}
-      <View className='w-full absolute flex-row justify-between items-center pt-14'>
+      <Animated.View entering={FadeIn.duration(1000)} className='w-full absolute flex-row justify-between items-center pt-14'>
         <TouchableOpacity className='p-2 rounded-full bg-white ml-5' onPress={() => navigation.goBack()}>
           <ChevronLeftIcon size={hp(3.5)} strokeWidth={4.5} color={'rgba(251, 191, 36, 0.8)'}/>
         </TouchableOpacity>
@@ -90,18 +95,18 @@ export default function RecipeCardScreen(mealData: any) {
         >
           <HeartIcon size={hp(3.5)} strokeWidth={4.5} color={isFavourite? 'red':'gray'}/>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
 
-      {/* Key Deatils Section: Cooktime, Calories */}
-      <View className='flex-row pt-2 mx-4 justify-evenly'>
+      {/* Key Details Section: Cooktime, Calories, Serving Size, Difficulty */}
+      <Animated.View entering={FadeInRight.delay(300).duration(700).springify().damping(12)} className='flex-row pt-2 mx-4 justify-evenly'>
         <RecipeKeyDetail value={35} unit={'Min'} iconType='time'/>
         <RecipeKeyDetail value={3} unit={'People'} iconType='servings'/>
         <RecipeKeyDetail value={100} unit={'kCal'} iconType='calories'/>
         <RecipeKeyDetail value={1} unit={'Easy'} iconType='difficulty'/>
-      </View>
+      </Animated.View>
       
       {/* Ingredients list section */}
-      <View className='mx-4 space-y-1 pt-3'>
+      <Animated.View entering={FadeInLeft.delay(400).duration(700).springify()} className='mx-4 space-y-1 pt-3'>
         <Text style={{fontSize: hp(2.5)}} className='font-bold flex-1 text-neutral-800'>Ingredients</Text>
         {
           recipe?
@@ -120,7 +125,7 @@ export default function RecipeCardScreen(mealData: any) {
           }):
           <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
         }
-      </View>
+      </Animated.View>
       
 
       {/* Instructions section */}
