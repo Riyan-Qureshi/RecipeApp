@@ -46,11 +46,11 @@ export default function HomeScreen() {
         </View>
       
         {/* Greetings and slogan */}
-        <View className='mx-4 space-y-2 mb-2'>
+        <View className='mx-4 space-y-2 mb-2 bg-amber-500 p-2 rounded-2xl'>
           <Text style={{fontSize: hp(1.8)}} className='text-neutral-600'>Hello Riyan,</Text>
           <Text style={{fontSize: hp(3.8)}} className='font-semibold text-neutral-600'>Make your own food,</Text>
           <Text style={{fontSize: hp(3.8)}} className='font-semibold text-neutral-600'>
-            stay at <Text className='text-amber-400'>home</Text>
+            stay at <Text className='text-white'>home!</Text>
           </Text>
         </View>
 

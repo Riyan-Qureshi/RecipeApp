@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp, } from 'react-native-responsive-screen'
 import { ChevronLeftIcon } from 'react-native-heroicons/outline'
-import { HeartIcon } from 'react-native-heroicons/solid'
+import { ClockIcon, HeartIcon } from 'react-native-heroicons/solid'
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
 import RecipeKeyDetail from '../utilities/RecipeKeyDetail'
 import YoutubeIframe from 'react-native-youtube-iframe'
 import { CachedImage } from '../helpers/CachedImage'
 import Animated, { FadeIn, FadeInDown, FadeInLeft, FadeInRight, FadeInUp } from 'react-native-reanimated'
+import { DataTable } from 'react-native-paper'
 
 export default function RecipeCardScreen(mealData: any) {
   const item = mealData.route.params.item
@@ -51,6 +52,8 @@ export default function RecipeCardScreen(mealData: any) {
     }
     return undefined
   }
+
+  const cookTimes: number[] = [10, 20, 30]
 
   return (
     <ScrollView 
@@ -131,9 +134,32 @@ export default function RecipeCardScreen(mealData: any) {
       {/* Instructions section */}
       <View className='mx-4 space-y-1 pt-3'>
         <Text style={{fontSize: hp(2.5)}} className='font-bold flex-1 text-neutral-800'>Instructions</Text>
+        
+        {/* Preperation Times */}
+        <DataTable className=''>
+          <DataTable.Header className='items-center'>
+            <View>
+              <ClockIcon size={hp(3)} strokeWidth={1} color={'rgba(251, 191, 36, 0.8)'} stroke={'black'}/> 
+            </View>
+            <DataTable.Title numeric>PREP</DataTable.Title>
+            <DataTable.Title numeric>COOK</DataTable.Title>
+            <DataTable.Title numeric>TOTAL</DataTable.Title>
+          </DataTable.Header>
+
+          <DataTable.Row>
+            {cookTimes.map((item, i) => {
+            return(
+              <DataTable.Cell key={i}>
+                <DataTable.Cell numeric>{item}</DataTable.Cell>
+              </DataTable.Cell>
+            )}
+            )}
+          </DataTable.Row>
+        </DataTable>
+
         {
           recipe?
-          <Text style={{fontSize: hp(1.5)}} className='font-semibold flex-1 text-neutral-600'>{recipe.strInstructions}</Text>:
+          <View className='pt-2'><Text style={{fontSize: hp(1.5)}} className='font-semibold flex-1 text-neutral-600'>{recipe.strInstructions}</Text></View>:
           <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
         }
       </View>
