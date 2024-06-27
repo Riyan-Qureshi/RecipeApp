@@ -1,6 +1,9 @@
 # Welcome to Bagelicious! 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Preview
+| Splash | Home Page | Recipe Card | Recipe Card Details |
+|------------|:-----------:|:-----------:|
+|<img src="./assets/splashScreen.png" width=200/>|<img src="./assets/homeScreen.png" width=200/>|<img src="./assets/recipeCardScreen.png" width=200/>|<img src="./assets/recipeCardScreen2.png" width=200/>|
 
 ## Get started
 
