@@ -1,8 +1,13 @@
 # Welcome to Bagelicious! 👋
 
 ## Preview
-| Splash | Home Page | Recipe Card | Recipe Card Details
-|<img src="./assets/splashScreen.png" width=200/>|<img src="./assets/homeScreen.png" width=200/>|<img src="./assets/recipeCardScreen.png" width=200/>|<img src="./assets/recipeCardScreen2.png" width=200/>|
+| Splash Page | Home Page
+|------------|:-----------:|
+<img src="./assets/splashScreen.png" width=200/>|<img src="./assets/homeScreen.png" width=200/>
+
+| Recipe Card Page | Recipe Card Details
+|------------|:-----------:|
+<img src="./assets/recipeCardScreen.png" width=200/>|<img src="./assets/recipeCardScreen2.png" width=200/>
 
 ## Get started
 
