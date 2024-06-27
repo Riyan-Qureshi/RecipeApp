@@ -16,16 +16,34 @@ const iconList: any = {
     difficulty: { icon: <Square3Stack3DIcon size={hp(4)} strokeWidth={3} color={'gray'}/>}
 }
 
-export default function RecipeKeyDetail({value, unit, iconType}:{value: number, unit: string, iconType: string}) {
-  return (
-    <View className='flex rounded-full bg-amber-400 p-3 space-y-2 items-center'>
-          <View className='flex rounded-full bg-white p-1'>
-            {iconList[iconType].icon}
-          </View>
-          <View className='flex rounded-full items-center'>
-            <Text style={{fontSize: hp(2)}} className='font-bold text-neutral-700'>{value}</Text>
-            <Text style={{fontSize: hp(1.4)}} className='font-bold text-neutral-700'>{unit}</Text>
-          </View>
-    </View>
-  )
+const macrosList: any = {
+    protein: { color: 'bg-red-400'},
+    fat: { color: 'bg-purple-400'},
+    carbs: { color: 'bg-green-400'}
+}
+
+export default function RecipeKeyDetail({value, unit, iconType}:{value: number | string, unit: string, iconType: string}) {
+  { 
+    if (typeof value == 'string') {
+      return (
+        <View className={'flex rounded-full p-3 space-y-2 items-center ' + macrosList[value.toLowerCase()].color}>
+              <View className='flex rounded-full items-center'>
+                <Text style={{fontSize: hp(2), width: hp(7)}} className='font-bold text-neutral-700 text-center'>{value}</Text>
+                <Text style={{fontSize: hp(1.4)}} className='font-bold text-neutral-700'>{unit}</Text>
+              </View>
+        </View>
+      )
+    }
+    return (
+      <View className='flex rounded-full bg-amber-400 p-3 space-y-2 items-center'>
+            <View className='flex rounded-full bg-white p-1'>
+              {iconList[iconType].icon}
+            </View>
+            <View className='flex rounded-full items-center'>
+              <Text style={{fontSize: hp(2)}} className='font-bold text-neutral-700'>{value}</Text>
+              <Text style={{fontSize: hp(1.4)}} className='font-bold text-neutral-700'>{unit}</Text>
+            </View>
+      </View>
+    )
+  }
 }

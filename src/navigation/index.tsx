@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import HomeScreen from '../screens/HomeScreen'
 import WelcomeScreen from '../screens/WelcomeScreen'
 import RecipeCardScreen from '../screens/RecipeCardScreen'
+import CustomRecipeCardScreen from '../screens/CustomRecipeCardScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -15,6 +16,7 @@ export default class Navigation extends Component {
           <Stack.Screen name="Home" component={HomeScreen} type="replace"/>
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Recipe" component={RecipeCardScreen} />
+          <Stack.Screen name='CustomRecipe' component={CustomRecipeCardScreen}/>
         </Stack.Navigator>
     </NavigationContainer>
     )

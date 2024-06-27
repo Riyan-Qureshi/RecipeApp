@@ -8,9 +8,12 @@ import useGetCategories from '../hooks/useGetCategories'
 import Recipes from '../components/Recipes'
 import axios from 'axios';
 import { UNSTABLE_usePreventRemove } from '@react-navigation/native';
+import CustomCategories from '../components/CustomCategories';
+import CustomRecipes from '../components/CustomRecipes';
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState('Beef')
+  // const [activeCategory, setActiveCategory] = useState('< 5 Ingredients')
   const {categories} = useGetCategories()
   const [meals, setMeals] = useState([])
 
@@ -19,6 +22,7 @@ export default function HomeScreen() {
   const fetchMeals = async () => {
       try{
           const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${activeCategory}`)
+          // const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=Beef`)
           if (res && res.data) {
             setMeals(res.data.meals)
           }
@@ -37,7 +41,7 @@ export default function HomeScreen() {
       <ScrollView 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 50}}
-        className='space-y-6 pt-14'
+        className='space-y-6 pt-14 mb-4'
       > 
         {/* Avatar and notification icons */}
         <View className='mx-4 flex-row justify-between items-center mb-2'>
@@ -46,11 +50,11 @@ export default function HomeScreen() {
         </View>
       
         {/* Greetings and slogan */}
-        <View className='mx-4 space-y-2 mb-2 bg-amber-500 p-2 rounded-2xl'>
+        <View className='mx-4 space-y-2 mb-2'>
           <Text style={{fontSize: hp(1.8)}} className='text-neutral-600'>Hello Riyan,</Text>
           <Text style={{fontSize: hp(3.8)}} className='font-semibold text-neutral-600'>Make your own food,</Text>
           <Text style={{fontSize: hp(3.8)}} className='font-semibold text-neutral-600'>
-            stay at <Text className='text-white'>home!</Text>
+            stay at <Text className='text-amber-400'>home!</Text>
           </Text>
         </View>
 
@@ -67,13 +71,15 @@ export default function HomeScreen() {
 
         {/* Categories section */}
         <View className='mx-4'>
-          {categories.length>0 && <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>}
+          {/* {categories.length>0 && <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>} */}
+          <CustomCategories activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
         </View>
         
         {/* Recipe section */}
         <View className='mx-4'>
           {
-            meals.length>0 && categories.length>0? <Recipes meals={meals}/> : <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
+            // meals.length>0 && categories.length>0? <Recipes meals={meals}/> : <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
+            <CustomRecipes /> 
           }
         </View>
       </ScrollView>
