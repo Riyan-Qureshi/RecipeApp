@@ -32,7 +32,7 @@ export interface Recipe {
     servings: number
     imageURL: string
     id: number
-    // category: 
+    category: string[]
 }
 
 export interface Category {

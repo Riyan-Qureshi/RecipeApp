@@ -42,7 +42,7 @@ export default function CustomRecipeCardScreen(mealData: any) {
       {/* Recipe image */}
       <Animated.View entering={FadeIn.duration(700)} className='justify-center mb-4'>
         {/* <Image 
-          source={{uri: item.strMealThumb}}
+          source={{uri: item.imageURL}}
           style={{width: wp(98), height: hp(50), borderRadius: 55}}
         /> */}
         <CachedImage
@@ -74,7 +74,7 @@ export default function CustomRecipeCardScreen(mealData: any) {
       </Animated.View>
 
       {/* Key Details Section: Cooktime, Calories, Serving Size, Difficulty */}
-        <Animated.View entering={FadeInRight.delay(300).duration(700).springify().damping(12)} className='flex-row pt-2 mx-4 justify-evenly'>
+        <Animated.View entering={FadeInRight.delay(300).duration(700).springify().damping(12)} className='flex-row pt-4 mx-4 justify-evenly'>
             <RecipeKeyDetail value={item.time.totalTime} unit={'Mins'} iconType='time'/>
             <RecipeKeyDetail value={item.servings} unit={'People'} iconType='servings'/>
             <RecipeKeyDetail value={item.calories} unit={'kCal'} iconType='calories'/>
@@ -87,7 +87,7 @@ export default function CustomRecipeCardScreen(mealData: any) {
         </Animated.View>
       
       {/* Ingredients list section */}
-      <Animated.View entering={FadeInLeft.delay(400).duration(700).springify()} className='mx-4 space-y-2 pt-3'>
+      <Animated.View entering={FadeInLeft.delay(400).duration(700).springify()} className='mx-4 space-y-2 pt-10'>
         <Text style={{fontSize: hp(2.5)}} className='font-bold flex-1 text-neutral-800'>Ingredients</Text>
         {
           item.ingredients.map((ingredient, i) => {
@@ -108,7 +108,7 @@ export default function CustomRecipeCardScreen(mealData: any) {
       
 
       {/* Preparation times section */}
-      <View className='mx-4 pt-3'>
+      <View className='mx-4 pt-10'>
         <Text style={{fontSize: hp(2.5)}} className='font-bold flex-1 text-neutral-800'>Timings</Text>
         <DataTable>
           <DataTable.Header className='items-center'>
@@ -136,18 +136,18 @@ export default function CustomRecipeCardScreen(mealData: any) {
       </View>
 
       {/* Instructions section */}
-      <View className='mx-4 space-y-2 pt-2'>
+      <View className='mx-4 space-y-2 pt-10'>
         <Text style={{fontSize: hp(2.5)}} className='font-bold flex-1 text-neutral-800'>Instructions</Text>
         <View className='space-y-2'>
             {
                 numberedInstructions.map((instruction, i) => {
                     return(
-                        <View key={i} className='space-x-4 mx-2'>
+                        <View key={i} className='space-x-4 mx-4'>
                             {
                                 instruction? 
                                 <View className='flex-row space-x-2'>
                                     <MaterialCommunityIcons name={`numeric-${i+1}-box-multiple`} size={24} color='rgb(45 42 50)' />
-                                    <Text className=' text-left'>{instruction}</Text>
+                                    <Text style={{fontSize: hp(1.8)}} className='font-semibold flex text-neutral-600 text-left' >{instruction}</Text>
                                 </View>
                                 : ''
                             }

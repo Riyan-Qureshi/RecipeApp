@@ -16,6 +16,10 @@ export const categoriesList: Array<Category> = [
     {
         name: 'Dessert',
         imageURL: 'https://images.pexels.com/photos/808941/pexels-photo-808941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    },
+    {
+        name: 'Snack',
+        imageURL: 'https://images.pexels.com/photos/1893555/pexels-photo-1893555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
     }
 ]
 
@@ -52,7 +56,8 @@ export const recipesList: Array<Recipe> = [
         pricing: {totalPrice: 4.63, servingPrice: 0.39},
         servings: 12,
         imageURL: 'https://images.pexels.com/photos/13698106/pexels-photo-13698106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        id: 0
+        id: 0,
+        category: ["Snack"]
     },
     {
         "title": "Avocado and Egg Toast",
@@ -69,7 +74,8 @@ export const recipesList: Array<Recipe> = [
         "pricing": {"totalPrice": 6.00, "servingPrice": 3},
         "servings": 2,
         "imageURL": "https://images.pexels.com/photos/7937471/pexels-photo-7937471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "id": 15
+        "id": 1,
+        "category": ["Breakfast"]
     },
     {
         "title": "Roasted Chickpeas and Veggies",
@@ -86,7 +92,8 @@ export const recipesList: Array<Recipe> = [
         "pricing": {"totalPrice": 6, "servingPrice": 3},
         "servings": 2,
         "imageURL": "https://cookingforpeanuts.com/wp-content/uploads/2021/04/Roasted-Chickpeas-Veggie-Bowl.jpg",
-        "id": 16
+        "id": 2,
+        "category": ["Lunch"]
     },
     {
         "title": "Baked Salmon with Asparagus",
@@ -104,7 +111,8 @@ export const recipesList: Array<Recipe> = [
         "pricing": {"totalPrice": 10, "servingPrice": 5},
         "servings": 2,
         "imageURL": "https://images.pexels.com/photos/7731673/pexels-photo-7731673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "id": 4
+        "id": 3,
+        "category": ["Lunch", "Dinner"]
     },
     {
         "title": "Greek Yogurt Parfait",
@@ -121,6 +129,7 @@ export const recipesList: Array<Recipe> = [
         "pricing": {"totalPrice": 4.00, "servingPrice": 2.00},
         "servings": 2,
         "imageURL": "https://images.pexels.com/photos/4696279/pexels-photo-4696279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "id": 9
+        "id": 4,
+        "category": ["Dessert"]
     }
 ]

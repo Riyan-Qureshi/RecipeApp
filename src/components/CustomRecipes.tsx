@@ -6,15 +6,29 @@ import Animated, { FadeInRight } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import { CachedImage } from '../helpers/CachedImage';
 import { recipesList } from '../constants/CustomFoodData';
+import { Recipe } from '../types/recipe';
 
-export default function CustomRecipes() {
+interface Props {
+    activeCategory: string
+}
+
+export default function CustomRecipes({activeCategory}: Props) {
     const navigation = useNavigation()
+
+    const checkCategory = (recipe: Recipe): boolean => {
+        return(
+            recipe.category.includes(activeCategory)
+        )
+    }
+
+    const activeRecipes: Array<Recipe> = recipesList.filter(checkCategory)
+
     return (
         <View>
             <Text style={{fontSize: hp(3)}} className='font-semibold text-neutral-600 mb-2'>Recipes</Text>
             <View>
                 <MasonryList
-                    data={recipesList}
+                    data={activeRecipes}
                     keyExtractor={(item): string => item.id} 
                     numColumns={2}
                     showsVerticalScrollIndicator={false}

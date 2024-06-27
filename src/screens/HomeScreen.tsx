@@ -10,29 +10,29 @@ import axios from 'axios';
 import { UNSTABLE_usePreventRemove } from '@react-navigation/native';
 import CustomCategories from '../components/CustomCategories';
 import CustomRecipes from '../components/CustomRecipes';
+import { Recipe } from '../types/recipe';
 
 export default function HomeScreen() {
-  const [activeCategory, setActiveCategory] = useState('Beef')
-  // const [activeCategory, setActiveCategory] = useState('< 5 Ingredients')
+  const [activeCategory, setActiveCategory] = useState('Breakfast')
   const {categories} = useGetCategories()
   const [meals, setMeals] = useState([])
 
   UNSTABLE_usePreventRemove(true, () => {})
 
-  const fetchMeals = async () => {
-      try{
-          const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${activeCategory}`)
-          // const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=Beef`)
-          if (res && res.data) {
-            setMeals(res.data.meals)
-          }
-      } catch(err) {
-          console.log('Could not fetch meal data')
-      }
-  }
+  // const fetchMeals = async () => {
+  //     try{
+  //         const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${activeCategory}`)
+  //         // const res = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=Beef`)
+  //         if (res && res.data) {
+  //           setMeals(res.data.meals)
+  //         }
+  //     } catch(err) {
+  //         console.log('Could not fetch meal data')
+  //     }
+  // }
   
   useEffect(() => {
-    fetchMeals()
+    // fetchMeals()
   }, [activeCategory])
 
   return (
@@ -79,7 +79,7 @@ export default function HomeScreen() {
         <View className='mx-4'>
           {
             // meals.length>0 && categories.length>0? <Recipes meals={meals}/> : <ActivityIndicator size={'large'} color={'rgba(251, 191, 36, 0.8)'}/>
-            <CustomRecipes /> 
+            <CustomRecipes activeCategory={activeCategory}/> 
           }
         </View>
       </ScrollView>
