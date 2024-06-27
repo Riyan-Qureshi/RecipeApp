@@ -10,16 +10,16 @@ interface IconList {
 }
 
 const iconList: any = {
-    time: { icon: <ClockIcon size={hp(4)} strokeWidth={3} color={'gray'}/>},
-    servings: { icon: <UsersIcon size={hp(4)} strokeWidth={3} color={'gray'}/>},
-    calories: { icon: <FireIcon size={hp(4)} strokeWidth={2} color={'gray'}/>},
+    time: { icon: <ClockIcon size={hp(4)} strokeWidth={3} color={'#2D2A32'}/>},
+    servings: { icon: <UsersIcon size={hp(4)} strokeWidth={3} color={'#2D2A32'}/>},
+    calories: { icon: <FireIcon size={hp(4)} strokeWidth={2} color={'#2D2A32'}/>},
     difficulty: { icon: <Square3Stack3DIcon size={hp(4)} strokeWidth={3} color={'gray'}/>}
 }
 
 const macrosList: any = {
-    protein: { color: 'bg-red-400'},
-    fat: { color: 'bg-purple-400'},
-    carbs: { color: 'bg-green-400'}
+    protein: { color: 'bg-zinc-800'},
+    fat: { color: 'bg-zinc-800'},
+    carbs: { color: 'bg-zinc-800'}
 }
 
 export default function RecipeKeyDetail({value, unit, iconType}:{value: number | string, unit: string, iconType: string}) {
@@ -28,8 +28,8 @@ export default function RecipeKeyDetail({value, unit, iconType}:{value: number |
       return (
         <View className={'flex rounded-full p-3 space-y-2 items-center ' + macrosList[value.toLowerCase()].color}>
               <View className='flex rounded-full items-center'>
-                <Text style={{fontSize: hp(2), width: hp(7)}} className='font-bold text-neutral-700 text-center'>{value}</Text>
-                <Text style={{fontSize: hp(1.4)}} className='font-bold text-neutral-700'>{unit}</Text>
+                <Text style={{fontSize: hp(2), width: hp(7)}} className='font-bold text-neutral-300 text-center'>{value}</Text>
+                <Text style={{fontSize: hp(1.5)}} className='font-bold text-neutral-300'>{unit}</Text>
               </View>
         </View>
       )
